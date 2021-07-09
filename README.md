@@ -2,6 +2,7 @@
 
 # 테이블 설계 완료
 
+## hotspot 테이블
     
     CREATE TABLE `hotspot` (
       `spot_id` int NOT NULL,
@@ -23,15 +24,8 @@
       PRIMARY KEY (`spot_id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3
 
-    CREATE TABLE `manager` (
-      `managerid` int NOT NULL,
-      `password` varchar(50) DEFAULT NULL,
-      `name` varchar(30) DEFAULT NULL,
-      `email` varchar(100) DEFAULT NULL,
-      `gender` char(1) DEFAULT NULL,
-      `auth` char(1) DEFAULT NULL,
-      PRIMARY KEY (`managerid`)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3
+
+## restaurent 테이블
 
     CREATE TABLE `restaurent` (
       `rest_id` int NOT NULL,
@@ -50,6 +44,9 @@
       CONSTRAINT `rest_spotid` FOREIGN KEY (`rest_spotid`) REFERENCES `hotspot` (`spot_id`) ON DELETE CASCADE ON UPDATE CASCADE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3
 
+
+## review 테이블
+
     CREATE TABLE `review` (
       `review_userid` int DEFAULT NULL,
       `reviewid` varchar(45) NOT NULL,
@@ -59,6 +56,9 @@
       KEY `review_userid_idx` (`review_userid`),
       CONSTRAINT `review_userid` FOREIGN KEY (`review_userid`) REFERENCES `user` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3
+
+
+## user 테이블
 
     CREATE TABLE `user` (
       `userid` int NOT NULL,
@@ -70,3 +70,17 @@
       `auth` char(1) DEFAULT NULL,
       PRIMARY KEY (`userid`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3
+    
+
+## manager 테이블
+
+    CREATE TABLE `manager` (
+      `managerid` int NOT NULL,
+      `password` varchar(50) DEFAULT NULL,
+      `name` varchar(30) DEFAULT NULL,
+      `email` varchar(100) DEFAULT NULL,
+      `gender` char(1) DEFAULT NULL,
+      `auth` char(1) DEFAULT NULL,
+      PRIMARY KEY (`managerid`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3
+
